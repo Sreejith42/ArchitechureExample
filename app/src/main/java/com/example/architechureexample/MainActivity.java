@@ -67,20 +67,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//        for(Post post:posts){
-//
-//            String content = "" + ("Id: " + post.getId() + "\n") +
-//                    ("UserId: " + post.getUserId() + "\n") +
-//                    ("Title: " + post.getTitle() + "\n") + ("Body: " + post.getBody() + "\n");
-//
-//            textViewResult.append(content);
-//
-//        }
 
         noteViewModel.getAllPosts().observe(this, new Observer<List<Post>>() {
             @Override
             public void onChanged(List<Post> posts) {
                 Log.d(TAG, "onChanged: " + posts);
+
+                for(Post post:posts){
+
+                    String content = "" + ("Id: " + post.getId() + "\n") +
+                            ("UserId: " + post.getUserId() + "\n") +
+                            ("Title: " + post.getTitle() + "\n") + ("Body: " + post.getBody() + "\n");
+
+                    textView.append(content);
+
+                }
 
             }
         });
